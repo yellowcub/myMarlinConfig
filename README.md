@@ -6,9 +6,9 @@ There are a number of useful videos for getting started updating firmware.  I fo
 
 [![](https://img.youtube.com/vi/fIl5X2ffdyo/hqdefault.jpg)](https://youtu.be/fIl5X2ffdyo)
 
-These configuration files are based on the [bugfix 2.1.x repository](https://github.com/yellowcub/Configurations), and the original versions for comparison can be found in the fork by navigating to the Creality Ender 3 Pro examples.
+These configuration files are based on the [bugfix 2.1.x repository](https://github.com/yellowcub/Configurations), and the original versions for comparison can be found in the fork by navigating to the Creality Ender 3 Pro examples.  The files are versioned, and will only work with this fork of the [Marlin Firmware](https://github.com/yellowcub/Marlin) code.
 
-These configuration files are versioned, and will only work with this fork of the [Marlin Firmware](https://github.com/yellowcub/Marlin) code.  Compiling Marlin Firmware requires the use of VS Code and the PlatformIO extension.  PlatformIO needs to be configured with the model of the board, which can be looked up in the `boards.h` file.  For the BTT SKR E3 mini v3.0 the board is `STM32G0B1RE`, which can be selected within the PlatformIO extension.  Alternatively, you can look up the `platformio.ini` file and change `default_envs` to `STM32G0B1RE_btt`.  The four header files (`.h`) here need to be copied to the Marlin/Marlin directory replacing any existing files of the same name.
+Compiling Marlin Firmware requires the use of VS Code and the PlatformIO extension.  PlatformIO needs to be configured with the model of the board, which can be looked up in the `boards.h` file.  For the BTT SKR E3 mini v3.0 the board is `STM32G0B1RE`, which can be selected within the PlatformIO extension.  Alternatively, you can look up the `platformio.ini` file and change `default_envs` to `STM32G0B1RE_btt`.  The four header files (`.h`) here need to be copied to the Marlin/Marlin directory replacing any existing files of the same name.
 
 It is possible I may have missed some minor changes that did not get described below.  This is a work in progress, and I may be changing other parameters as I get more comfortable with modifying the firmware.
 
