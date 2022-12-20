@@ -96,6 +96,8 @@ I did not change the default steps per axis within `Configuration.h` as these ca
 
 https://github.com/yellowcub/myMarlinConfig/blob/d8b16303a764c005113de82d7aa24b312a7c47fb/src/Configuration.h#L1168-L1173
 
+For movement, I have gone back to the max feedrate and acceleration values for the original CrealityV422 setup.  There is no reason any of these values for the BTT board should be slower.  You should also make sure the settings in your slicer reflect the values here, or you will get inaccurate time to complete estimates.
+
 ## Advanced Configuration
 
 Only a few changes were made to the `Configuration_adv.h` file.
