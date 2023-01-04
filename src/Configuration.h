@@ -2240,18 +2240,6 @@
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
-#define PREHEAT_1_LABEL       "TPU"
-#define PREHEAT_1_TEMP_HOTEND 155
-#define PREHEAT_1_TEMP_BED     45
-#define PREHEAT_1_TEMP_CHAMBER 35
-#define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
-
-#define PREHEAT_2_LABEL       "PC"
-#define PREHEAT_2_TEMP_HOTEND 155
-#define PREHEAT_2_TEMP_BED     45
-#define PREHEAT_2_TEMP_CHAMBER 35
-#define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
-
 // @section motion
 
 /**
