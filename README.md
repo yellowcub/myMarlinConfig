@@ -8,7 +8,7 @@ There are a number of useful videos for getting started updating firmware.  I fo
 
 I also recommend the following link at [marlinfw.org](https://marlinfw.org/docs/configuration/configuration.html) for an explanation of each of the settings, however it may not entirely reflect the 2.1.x version of parameter names.
 
-These configuration files are based on the [bugfix 2.1.x repository](https://github.com/yellowcub/Configurations), and the original versions for comparison can be found in the fork by navigating to the Creality Ender 3 Pro examples.  The files are versioned, and will only work with this fork of the [Marlin Firmware](https://github.com/yellowcub/Marlin) code.
+These configuration files are based on the [2.1.2 repository](https://github.com/MarlinFirmware/Configurations/releases/tag/2.1.2), and the original versions for comparison can be found in the fork by navigating to the Creality Ender 3 Pro examples.  The files are versioned, and will only work with this fork of the [Marlin Firmware](https://github.com/MarlinFirmware/Marlin/tree/2.1.2) code.
 
 Compiling Marlin Firmware requires the use of VS Code and the PlatformIO extension.  PlatformIO needs to be configured with the model of the board, which can be looked up in the `boards.h` file.  For the BTT SKR E3 mini v3.0 the board is `STM32G0B1RE`, which can be selected within the PlatformIO extension.  Alternatively, you can look up the `platformio.ini` file and change `default_envs` to `STM32G0B1RE_btt`.  The four header files (`.h`) here need to be copied to the Marlin/Marlin directory replacing any existing files of the same name.
 
@@ -18,17 +18,12 @@ It is possible I may have missed some minor changes that did not get described b
 
 Changes to the `Configurations.h` file consist of:
 
-  - Commenting error warnings
   - Updating the author and machine names
   - Changing the extrudor heater maximum temperature
   - Enabling Z-Axis probing via the BLTouch
   - Geometry changes
   - Auto Bed Leveling (ABL)
-
-### Error Warnings
-The first change is to comment out the initial error warnings not to build with `import-2.1.x`.  As noted above, this was built with `bugfix-2.1.x`.
-
-https://github.com/yellowcub/myMarlinConfig/blob/d8b16303a764c005113de82d7aa24b312a7c47fb/src/Configuration.h#L23-L24
+  - Change E0 steps/mm to 400 for Microswiss NG extruder
 
 ### Author and Machine Name
 The author and machine settings are optional for keeping track of personal firmware builds.
@@ -70,7 +65,7 @@ https://github.com/yellowcub/myMarlinConfig/blob/d8b16303a764c005113de82d7aa24b3
 
 ### Geometry
 
-I changed the following lines to reflect the limits that my gantry axes could reach before binding with other hardware.  I may also change the minimum positions, for example, for the Y-axis since the endstop zero position places the nozzle in front of the bed.  The X-axis zero position is very close to the bed edge, but allowing an additional 10 mm past the bed should allow the ABL to mesh more of the bed accounting for the probe offsets.  The Z-axis was based on my comfort level for the E0 filament extruder and bowden tube meeting the top frame.
+I changed the following lines to reflect the limits that my gantry axes could reach before binding with other hardware.  The X-axis zero position is very close to the bed edge, but allowing an additional 10 mm past the bed should allow the ABL to mesh more of the bed accounting for the probe offsets.  The y axis endstop is in front of the bed and requires a negative offset [bed corner is at (0,0)].  The Z-axis was based on my comfort level for the E0 filament extruder and bowden tube meeting the top frame.
 
 https://github.com/yellowcub/myMarlinConfig/blob/d8b16303a764c005113de82d7aa24b312a7c47fb/src/Configuration.h#L1712-L1714
 
