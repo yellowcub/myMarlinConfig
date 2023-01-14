@@ -20,8 +20,6 @@
  *
  */
 #pragma once
-//#error "Don't build with import-2.1.x configurations!"
-//#error "Use the 'bugfix...' or 'release...' configurations matching your Marlin version."
 
 /**
  * Configuration.h
@@ -1491,7 +1489,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -53, -12, -1.73 }
+#define NOZZLE_TO_PROBE_OFFSET { -43, -12, -1.73 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1706,12 +1704,12 @@
 #define Y_BED_SIZE 225
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -5
+#define Y_MIN_POS -5
 #define Z_MIN_POS 0
-#define X_MAX_POS (X_BED_SIZE + 10)
-#define Y_MAX_POS (Y_BED_SIZE)
-#define Z_MAX_POS 220
+#define X_MAX_POS (X_BED_SIZE + 35)
+#define Y_MAX_POS (Y_BED_SIZE + 5)
+#define Z_MAX_POS 225
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1881,8 +1879,8 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-#define AUTO_BED_LEVELING_BILINEAR
-//define AUTO_BED_LEVELING_UBL
+//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
@@ -1931,7 +1929,7 @@
    */
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 0.0 // (mm) Default fade height.
+    #define DEFAULT_LEVELING_FADE_HEIGHT 2.0 // (mm) Default fade height.
   #endif
 
   /**
@@ -1997,13 +1995,13 @@
   //========================= Unified Bed Leveling ============================
   //===========================================================================
 
-  //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
+  #define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
-  //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
+  #define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
 
   #define UBL_MESH_EDIT_MOVES_Z     // Sophisticated users prefer no movement of nozzle
   #define UBL_SAVE_ACTIVE_ON_M500   // Save the currently active mesh in the current slot on M500
@@ -2011,7 +2009,7 @@
   //#define UBL_Z_RAISE_WHEN_OFF_MESH 2.5 // When the nozzle is off the mesh, this value is used
                                           // as the Z-Height correction value.
 
-  //#define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
+  #define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
 
 #elif ENABLED(MESH_BED_LEVELING)
 
@@ -2112,7 +2110,7 @@
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-#define HOMING_FEEDRATE_MM_M { (40*60), (40*60), (8*60) }
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (8*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2755,7 +2753,7 @@
 
 //
 // ReprapWorld Graphical LCD
-// https://reprapworld.com/?products_details&products_id/1218
+// https://reprapworld.com/electronics/3d-printer-modules/autonomous-printing/graphical-lcd-screen-v1-0/
 //
 //#define REPRAPWORLD_GRAPHICAL_LCD
 
@@ -3156,6 +3154,10 @@
 //#define TFT_CLASSIC_UI
 //#define TFT_COLOR_UI
 //#define TFT_LVGL_UI
+
+#if ENABLED(TFT_COLOR_UI)
+  //#define TFT_SHARED_SPI   // SPI is shared between TFT display and other devices. Disable async data transfer
+#endif
 
 #if ENABLED(TFT_LVGL_UI)
   //#define MKS_WIFI_MODULE  // MKS WiFi module
